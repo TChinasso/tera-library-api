@@ -8,7 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(String(process.env.DATABASE_URL)),
+    MongooseModule.forRoot(String(process.env.MONGODB_URI)),
     BooksModule,
   ],
   controllers: [AppController],

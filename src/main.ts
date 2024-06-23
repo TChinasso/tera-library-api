@@ -7,5 +7,5 @@ async function bootstrap() {
   return app
 }
 const app = bootstrap();
-
+console.log(process.env.MONGODB_URI)
  export default app

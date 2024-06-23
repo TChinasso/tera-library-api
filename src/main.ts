@@ -6,6 +6,6 @@ async function bootstrap() {
   await app.listen(3001);
   return app
 }
-const app = bootstrap();
 export const maxDuration = 600
-export default app
+const app = bootstrap();
+module.exports = app

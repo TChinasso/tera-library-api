@@ -16,4 +16,4 @@ async function bootstrap() {
 }
 export const maxDuration = 600
 const app = bootstrap();
-module.exports = app
+export default app

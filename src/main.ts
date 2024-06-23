@@ -1,19 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ExpressAdapter } from '@nestjs/platform-express';
-import { createServer } from 'http';
-const express = require('express')
-async function bootstrap() {
-  const expressApp = await express();
-  const app = await NestFactory.create(
-    AppModule,
-    new ExpressAdapter(expressApp),
-  );
-  app.listen(3001)
-  await app.init();
+import { ConfigService } from '@nestjs/config';
 
-  return createServer(expressApp);
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  const configService = app.get(ConfigService);
+  const port = configService.get('PORT') || 3000;
+  await app.listen(port);
 }
+bootstrap()
 export const maxDuration = 600
-const app = bootstrap();
-export default app

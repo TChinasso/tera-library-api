@@ -7,3 +7,5 @@ async function bootstrap() {
   return app
 }
 const app = bootstrap();
+
+ export default app

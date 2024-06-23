@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { BooksModule } from './modules/Book/book.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://admin:S8YpRUJCeIEduR8M@tera-library.7uq3vw4.mongodb.net/?retryWrites=true&w=majority&appName=tera-library'),
+  imports: [MongooseModule.forRoot(process.env.DATABASE_URL),
     BooksModule
   ],
   controllers: [AppController],

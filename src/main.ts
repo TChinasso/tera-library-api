@@ -6,6 +6,5 @@ async function bootstrap() {
   await app.listen(3001);
   return app
 }
-const app = bootstrap();
-console.log(process.env.MONGODB_URI)
- export default app
+export const app = bootstrap();
+export const maxDuration = 600

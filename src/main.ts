@@ -2,9 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { createServer } from 'http';
-import * as express from 'express';
+const express = require('express')
 async function bootstrap() {
-  const expressApp = express();
+  const expressApp = await express();
   const app = await NestFactory.create(
     AppModule,
     new ExpressAdapter(expressApp),

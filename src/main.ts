@@ -1,16 +1,18 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ConfigService } from '@nestjs/config';
-
+import { ExpressAdapter } from '@nestjs/platform-express';
+import { createServer } from 'http';
+const express = require('express')
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors({
-    origin: '*', // Allow all origins
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS' // Allow all standard methods
-  });
-  const configService = app.get(ConfigService);
-  const port = configService.get('PORT') || 3001;
-  await app.listen(port);
+  const expressApp = await express();
+  const app = await NestFactory.create(
+    AppModule,
+    new ExpressAdapter(expressApp),
+  );
+  app.listen(3001)
+  await app.init();
+  return createServer(expressApp);
 }
-export const server = bootstrap()
 export const maxDuration = 600
+const app = bootstrap();
+export default app

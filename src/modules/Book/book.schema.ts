@@ -21,7 +21,7 @@ export class Book {
   category: string;
 
   @Prop()
-  stock: string;
+  stock: number;
 
   @Prop()
   users_who_liked: string[];

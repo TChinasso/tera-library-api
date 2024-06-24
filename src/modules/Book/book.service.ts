@@ -30,9 +30,10 @@ export class BooksService {
           { author: { $regex: search, $options: 'i' } },
         ];
       }
-      if (inStock) query.stock = { $gt: 0 };
+      if (Boolean(inStock)) query.stock = { $gt: 0 };
       return { query, skip, sort };
     }
+    
     console.log(buildQueryParams());
     const { query, skip, sort } = buildQueryParams();
 

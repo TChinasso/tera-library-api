@@ -10,7 +10,7 @@ async function bootstrap() {
     new ExpressAdapter(expressApp),
   );
   app.listen(3001)
-  await app.init();
+  app.enableCors()
   return createServer(expressApp);
 }
 export const maxDuration = 600

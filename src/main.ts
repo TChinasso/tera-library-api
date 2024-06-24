@@ -10,8 +10,7 @@ async function bootstrap() {
   });
   const configService = app.get(ConfigService);
   const port = configService.get('PORT') || 3001;
-  
   await app.listen(port);
 }
-bootstrap()
+export const server = bootstrap()
 export const maxDuration = 600
